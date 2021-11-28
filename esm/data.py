@@ -257,7 +257,7 @@ class BatchConverter(object):
         batch_labels, seq_str_list = zip(*raw_batch)
         seq_encoded_list = [self.alphabet.encode(seq_str) for seq_str in seq_str_list]
         max_len = max(len(seq_encoded) for seq_encoded in seq_encoded_list)
-        tokens = torch.empty(
+        tokens = torch.empty( # [n,max_len]
             (
                 batch_size,
                 max_len + int(self.alphabet.prepend_bos) + int(self.alphabet.append_eos),
